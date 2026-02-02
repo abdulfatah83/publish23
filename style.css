@@ -1,0 +1,361 @@
+:root {
+    /* Academic Palette: Deep Navy & Gold */
+    --primary-color: #002147;
+    /* Navy Blue */
+    --primary-dark: #00152e;
+    --accent-color: #D4AF37;
+    /* Gold */
+    --secondary-color: #f8f9fa;
+    --text-color: #212529;
+    --glass-bg: rgba(255, 255, 255, 0.95);
+    /* Less transparent for professionalism */
+    --glass-border: rgba(212, 175, 55, 0.3);
+    /* Gold border hint */
+    --shadow: 0 10px 30px rgba(0, 33, 71, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cairo', 'Tajawal', sans-serif;
+    background-color: #e9ecef;
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.container {
+    width: 100%;
+    max-width: 700px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Glass Card Style */
+.glass-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--primary-color);
+}
+
+/* Header */
+.main-header {
+    text-align: center;
+}
+
+.logo-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.logo-icon {
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 0px var(--accent-color);
+}
+
+.header-text h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.header-text h2 {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #555;
+    border-bottom: 2px solid var(--accent-color);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* Search Section */
+.search-section {
+    text-align: center;
+}
+
+.search-section h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.instruction {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.search-box {
+    display: flex;
+    gap: 10px;
+}
+
+#searchInput {
+    flex: 1;
+    padding: 15px;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+#searchInput:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 33, 71, 0.1);
+}
+
+#searchBtn {
+    padding: 15px 30px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#searchBtn:hover {
+    background-color: var(--primary-dark);
+}
+
+.error-msg {
+    color: #dc3545;
+    font-size: 0.9rem;
+    margin-top: 15px;
+    min-height: 1.2em;
+    font-weight: 700;
+}
+
+/* MODAL STYLES */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: white;
+    padding: 0;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+    overflow: hidden;
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+    position: relative;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 1.4rem;
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.close-modal:hover {
+    opacity: 1;
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+.info-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.info-item .label {
+    font-weight: 600;
+    color: #666;
+}
+
+.info-item .value {
+    font-weight: 700;
+    color: var(--text-color);
+    font-size: 1.1rem;
+}
+
+.info-item.highlight {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+    border-bottom: none;
+    margin-top: 5px;
+}
+
+.info-item.highlight .value {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+}
+
+.modal-footer {
+    padding: 1.5rem;
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    border-top: 1px solid #e9ecef;
+}
+
+.print-btn {
+    background-color: var(--accent-color);
+    color: var(--primary-dark);
+    border: none;
+    padding: 10px 25px;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: filter 0.2s;
+}
+
+.print-btn:hover {
+    filter: brightness(1.1);
+}
+
+/* Footer & Credits */
+.main-footer {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #777;
+    margin-top: 2rem;
+}
+
+.designer-name {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+/* PRINT MEDIA QUERY */
+@media print {
+    body {
+        background: white;
+        display: block;
+    }
+
+    .container,
+    .background-globes,
+    .modal-overlay {
+        display: none !important;
+        /* Hide everything initially */
+    }
+
+    /* Show only the modal content, but reset its fixed positioning */
+    .modal-overlay.active {
+        display: block !important;
+        position: static;
+        background: white;
+        opacity: 1;
+        visibility: visible;
+        width: 100%;
+        height: auto;
+    }
+
+    .modal-content {
+        box-shadow: none;
+        width: 100%;
+        max-width: 100%;
+        border: 2px solid #000;
+        transform: none !important;
+    }
+
+    .close-modal,
+    .modal-footer {
+        display: none !important;
+        /* Hide buttons when printing */
+    }
+
+    .modal-header {
+        background-color: white !important;
+        color: black !important;
+        border-bottom: 2px solid black;
+    }
+}
